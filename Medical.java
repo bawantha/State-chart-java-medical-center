@@ -3,7 +3,7 @@ public /**
  */
 public class Medical {
 
-        private boolean hasMoreMediceInStorage;
+      
         private boolean willingToBuyMedcineFromCenter;
         private boolean isInventryEmpty;
         State state;
@@ -27,13 +27,7 @@ public class Medical {
             return this.isInventryEmpty;
         }
 
-        public void sethasMoreMedicneInSotrage(boolean b){
-            this.hasMoreMediceInStorage=b;
-        }
 
-        public boolean getHasMoreMedicneInStorage(){
-            return this.hasMoreMediceInStorage;
-        }
 
 
 }
@@ -69,4 +63,20 @@ class PhramistIssueMedicine extends State{
             }
         }
     }
+}
+
+
+class InventryEmpty extends State{
+    private boolean hasMoreMediceInStorage;
+    public void sethasMoreMedicneInSotrage(boolean b){
+        this.hasMoreMediceInStorage=b;
+    }
+
+    public boolean getHasMoreMedicneInStorage(){
+        return this.hasMoreMediceInStorage;
+    }
+}
+
+class Patient{
+    
 }
