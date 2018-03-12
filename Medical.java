@@ -1,30 +1,12 @@
-public /**
- * Medical
- */
+
 public class Medical {
 
       
-        private boolean willingToBuyMedcineFromCenter;
-        private boolean isInventryEmpty;
+      
+     
         State state;
         public void setstate(State s){
             this.state=s;
-        }
-
-        public void SetwillingToBuyMedcineFromCenter(boolean b){
-            this.willingToBuyMedcineFromCenter=b;
-        }
-
-        public void setIsInvetryEmpty(boolean b){
-            this.isInventryEmpty=b;
-        }
-        
-        public boolean getWillingToBuyMedcineFromCenter(){
-            return this.willingToBuyMedcineFromCenter;
-        }
-
-        public boolean getIsInventryEmpty(){
-            return this.isInventryEmpty;
         }
 
 
@@ -42,8 +24,8 @@ class Patient_counselling extends State{
 }
 
 class MediclReciptIssued extends State{
-    public process(Medical m){
-        if(m.getWillingToBuyMedcineFromCenter){
+    public MediclReciptIssued(Medical m,Patient p){
+        if(p.getWillingToBuyMedcineFromCenter){
             m.setstate(new PhramistIssueMedicine());
         }
 
@@ -55,9 +37,24 @@ class MediclReciptIssued extends State{
 
 
 class PhramistIssueMedicine extends State{
+    private boolean isInventryEmpty;
+
+
+    public void setIsInvetryEmpty(boolean b){
+        this.isInventryEmpty=b;
+    }
+    
+
+    public boolean getIsInventryEmpty(){
+        return this.isInventryEmpty;
+    }
+
+
+
+
     public PhramistIssueMedicine(Medical m){
         if(m.getIsInventryEmpty()){
-            m.setstate(new InventryEmpty);
+            m.setstate(new InventryEmpty());
             if(m.getHasMoreMedicneInStorage()){
                 m.
             }
@@ -78,5 +75,14 @@ class InventryEmpty extends State{
 }
 
 class Patient{
-    
+    private boolean willingToBuyMedcineFromCenter;
+    public void SetwillingToBuyMedcineFromCenter(boolean b){
+        this.willingToBuyMedcineFromCenter=b;
+    }
+    public boolean getWillingToBuyMedcineFromCenter(){
+        return this.willingToBuyMedcineFromCenter;
+    }
+
 }
+
+class 
