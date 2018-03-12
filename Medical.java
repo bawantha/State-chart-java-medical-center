@@ -1,17 +1,10 @@
 
 public class Medical {
-
-      
-      
-     
         State state;
+        
         public void setstate(State s){
             this.state=s;
         }
-
-
-
-
 }
 
 abstract class State{
@@ -50,14 +43,24 @@ class PhramistIssueMedicine extends State{
     }
 
 
-
+    public void issue(){
+        //this method foe issu th medince
+    }
 
     public PhramistIssueMedicine(Medical m){
+
         if(m.getIsInventryEmpty()){
             m.setstate(new InventryEmpty());
             if(m.getHasMoreMedicneInStorage()){
-                m.
+                m.refill();
+            }else{
+                m.setstate(new ReciptPrint());
             }
+        }
+        else{
+
+            m.issue();
+            m.setstate(new BillPrint());
         }
     }
 }
@@ -72,10 +75,16 @@ class InventryEmpty extends State{
     public boolean getHasMoreMedicneInStorage(){
         return this.hasMoreMediceInStorage;
     }
+
+
+    public void refill(){};// this method will refill the inventry
 }
 
 class Patient{
     private boolean willingToBuyMedcineFromCenter;
+
+
+    private boolean donePayment;
     public void SetwillingToBuyMedcineFromCenter(boolean b){
         this.willingToBuyMedcineFromCenter=b;
     }
@@ -83,6 +92,32 @@ class Patient{
         return this.willingToBuyMedcineFromCenter;
     }
 
+    public boolean getDonePayment(){
+        return this.donePayment;
+    }
+
+    public void setDonePayment(boolean d){
+        this.donePayment=d;
+    }
+
 }
 
-class 
+class ReciptPrint extends State{
+    public ReciptPrint(){
+        Exit e=new Exit();
+    }
+}
+
+
+class BillPrint extends State{
+    public BillPrint(Patient p){
+
+    }
+
+}
+
+class Exit{
+    Exit(){
+        System.out.prinln("Bye");
+    }
+};
