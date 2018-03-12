@@ -27,7 +27,14 @@ public class Medical {
             return this.isInventryEmpty;
         }
 
-        pu
+        public void sethasMoreMedicneInSotrage(boolean b){
+            this.hasMoreMediceInStorage=b;
+        }
+
+        public boolean getHasMoreMedicneInStorage(){
+            return this.hasMoreMediceInStorage;
+        }
+
 
 }
 
@@ -57,6 +64,9 @@ class PhramistIssueMedicine extends State{
     public PhramistIssueMedicine(Medical m){
         if(m.getIsInventryEmpty()){
             m.setstate(new InventryEmpty);
+            if(m.getHasMoreMedicneInStorage()){
+                m.
+            }
         }
     }
 }
