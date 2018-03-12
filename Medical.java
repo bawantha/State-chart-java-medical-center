@@ -110,13 +110,15 @@ class ReciptPrint extends State{
 
 
 class BillPrint extends State{
-    public BillPrint(Patient p){
-
+    public BillPrint(Medical m,Patient p){
+        if(p.getDonePayment()){
+            m.setstate(new Exit());
+        }
     }
 
 }
 
-class Exit{
+class Exit extends State{
     Exit(){
         System.out.prinln("Bye");
     }
